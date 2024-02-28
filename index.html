@@ -1,98 +1,70 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> OCTANET TASK 1</title>
-    <link rel="stylesheet" href="mystyle.css" />
-  </head>
-  <body>
-    <div class="topnav">
-      <a class="active" href="#cent">MYMUSIC</a>
-      <a href="#playlists"> PLAYLISTS</a>
-      <a href="#artists"> ARTISTS</a>
-      <a href="#accesories">ACCESSORIES</a>
-      <a href="#topartists">TOP ARTISTS</a>
-      <a href="#trendingmusic">TRENDING MUSIC</a>
-      <a href="#make your own playlist">MAKE YOUR OWN PLAYLIST</a>
-      <a href="liked songs"> LIKED SONGS</a>
-      <a href="feedback"> FEEDBACK</a>
-    </div>
-    <center>
-      <img src="istockphoto-1175435360-612x612.jpg"  />
-    </center>
-    <center>
-      <h2 style="color: green;"> WELCOME TO HARMONIC HERITAGE- A MUSICAL PARDISE</h2>
-    <div class="paragraph"> 
-    </div>
-    <div class="paragraph1">
-      <h3> Download the latest version from the Microsoft Store.</h3>
-    </div>
-    <div class="paragraph2">
-      <p> The latest entertainment apps now come installed with the latest windows or macOS. Upgrade today to get your favourite music, movies, TV shows and podcasts. You can join HH Music and stream — or download and play offline — millions of songs, ad‑free.</p>
-    </div>
-     
-  </center>
-  <centre>
-    <hr>
-  <div class="music">
-    <h2> MUSIC 🎵</h2>
-  </div>
-  </centre>
-<div class="spotify-playlists">
-  <h2>Spotify Playlists</h2>
-<center>
-  <div class="cen" id="cent">
-    <div class="in">
-  <div class="list">
-    <div class="item">
-      <img src="download.jpeg" />
-      <div class="play">
-        <span class="fa fa-play"></span>
-      </div>
-      <h4>Today's Top Hits</h4>
-      <p>BIG BAD BEAST</p>
-    </div>
-  </div>
+<head>
+  <meta charset="UTF-8">
+  <title>Awesome To-Do List HTML,CSS & JavaScript</title>
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+	<h2 class="f">Todo list</h2>
+	<div class="container">
+		<div class="addTask">
+			<input type="text" placeholder="Add your task">
+			<button>Add Task</button>
+		</div>
 
-  <div class="in">
-    <div class="list">
-      <div class="item">
-        <img src="3.jpg" />
-        <div class="play">
-          <span class="fa fa-play"></span>
-        </div>
-        <h4>Today's Top Hits</h4>
-        <p>ARABIC KUTHU</p>
-      </div>
-    </div>
+		<ol class="notCompleted">
+			<h3>not completed</h3>
+		</ol>
 
-    <div class="in">
-      <div class="list">
-        <div class="item">
-          <img src="download.jpeg" />
-          <div class="play">
-            <span class="fa fa-play"></span>
-          </div>
-          <h4>Today's Top Hits</h4>
-          <p>MASTER</p>
-        </div>
-      </div>
+		<ol class="Completed">
+			<h3>completed</h3>
+		</ol>
+	</div>
 
-</center>
-    <br>
-    <br><br>
-    
-          <div class="foooter"></div>
-<br>
-<br>
-<br>
-          <div class="fot">
-            <dl>
-              <dt>contact</dt>
-              <dd>Email:example@gmail.com</dd>
-            </dl>
-          </div>
-  </body>
+	<script>
+		const input = document.querySelector('input');
+		const btn = document.querySelector('.addTask > button');
+
+		btn.addEventListener('click', addList);
+		input.addEventListener('keyup', (e)=>{
+			(e.keyCode === 13 ? addList(e) : null);
+		})
+
+		function addList(e){
+			const notCompleted = document.querySelector('.notCompleted');
+			const Completed = document.querySelector('.Completed');
+
+			const newLi = document.createElement('li');
+			const checkBtn = document.createElement('button');
+			const delBtn = document.createElement('button');
+
+			checkBtn.innerHTML = '<i class="fa fa-check"></i>';
+			delBtn.innerHTML = '<i class="fa fa-trash"></i>';
+
+
+			if(input.value !==''){
+				newLi.textContent = input.value;
+				input.value = '';
+				notCompleted.appendChild(newLi);
+				newLi.appendChild(checkBtn);
+				newLi.appendChild(delBtn);
+			}
+
+			checkBtn.addEventListener('click', function(){
+				const parent = this.parentNode;
+				parent.remove();
+				Completed.appendChild(parent);
+				checkBtn.style.display = 'none';
+			});
+
+			delBtn.addEventListener('click', function(){
+				const parent = this.parentNode;
+				parent.remove();
+			});
+		}
+
+	</script>
+</body>
 </html>
